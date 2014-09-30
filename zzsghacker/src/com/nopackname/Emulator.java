@@ -5,13 +5,9 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import com.nopackname.response.API_MY_GEN_MOD_REINIT_BASE_RESPONSE;
-import com.nopackname.response.API_MY_GEN_MOD_REINIT_RESPONSE;
-import com.nopackname.response.API_MY_GEN_MOD_WASHPRICE_BASE_RESPONSE;
-import com.nopackname.response.API_MY_GEN_MOD_WASHPRICE_RESPONSE;
-import com.nopackname.tools.HttpClient;
-import com.nopackname.tools.HttpResult;
-import com.nopackname.tools.JSONUtil;
+import com.nopackname.api.*;
+import com.nopackname.tools.*;
+import com.nopackname.response.*;
 
 public class Emulator {
 
@@ -57,7 +53,7 @@ public class Emulator {
             if (cmd instanceof API_MY_GEN_MOD) {
                 // logical
                 API_MY_GEN_MOD gen = (API_MY_GEN_MOD) cmd;
-                if (API_MY_GEN_MOD.REINIT.equals(gen.action)) {
+                if (API_MY_GEN_MOD.REINIT.equals(gen.getAction())) {
                     API_MY_GEN_MOD_REINIT_BASE_RESPONSE resp = (API_MY_GEN_MOD_REINIT_BASE_RESPONSE) JSONUtil
                             .parseObject(result.getResponse(), API_MY_GEN_MOD_REINIT_BASE_RESPONSE.class);
                     API_MY_GEN_MOD_REINIT_RESPONSE reinit = resp.getRet();
@@ -103,11 +99,11 @@ public class Emulator {
                                     API_MY_GEN_MOD.MODE_EXP));
                         }
                     }
-                } else if (API_MY_GEN_MOD.REJECT.equals(gen.action)) {
+                } else if (API_MY_GEN_MOD.REJECT.equals(gen.getAction())) {
 
-                } else if (API_MY_GEN_MOD.ACCEPT.equals(gen.action)) {
+                } else if (API_MY_GEN_MOD.ACCEPT.equals(gen.getAction())) {
 
-                } else if (API_MY_GEN_MOD.WASHPRICE.equals(gen.action)) {
+                } else if (API_MY_GEN_MOD.WASHPRICE.equals(gen.getAction())) {
                     API_MY_GEN_MOD_WASHPRICE_BASE_RESPONSE baseResp = (API_MY_GEN_MOD_WASHPRICE_BASE_RESPONSE) JSONUtil
                             .parseObject(result.getResponse(), API_MY_GEN_MOD_WASHPRICE_BASE_RESPONSE.class);
                     API_MY_GEN_MOD_WASHPRICE_RESPONSE resp = baseResp.getRet();

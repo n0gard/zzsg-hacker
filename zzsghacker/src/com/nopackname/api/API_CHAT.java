@@ -1,4 +1,4 @@
-package com.nopackname;
+package com.nopackname.api;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -67,7 +67,7 @@ public class API_CHAT extends API {
         // HTTP/1.0
         API_CHAT chat = new API_CHAT();
         chat.targettype = TARGETTYPE_DEFAULT;
-        chat.txt = toURIEncoded("@不解 无法更新  不知道木盒在干嘛。。。我ios7.1.2");
+        chat.txt = toURIEncoded("其实如果整体回档 银子应该还在的吧");
         // System.out.println(chat.toString());
         String uriString = "http://s6.zzsanguo.com" + chat.toString();
         Map<String, String> headers = new HashMap<String, String>();

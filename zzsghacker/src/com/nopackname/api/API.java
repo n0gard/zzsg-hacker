@@ -1,4 +1,4 @@
-package com.nopackname;
+package com.nopackname.api;
 
 import java.io.IOException;
 
