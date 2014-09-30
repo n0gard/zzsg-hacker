@@ -1,4 +1,4 @@
-package com.nopackname;
+package com.nopackname.api;
 
 public class API_MY_GEN_MOD extends API {
 
@@ -75,4 +75,39 @@ public class API_MY_GEN_MOD extends API {
         uriBuilder.append(AND).append(_P).append(EQUAL).append(_p);
         return uriBuilder.toString();
     }
+
+    // setter & getter
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCity() {
+        return city;
+    }
+
+    public void setCity(int city) {
+        this.city = city;
+    }
+
+    public int getMode() {
+        return mode;
+    }
+
+    public void setMode(int mode) {
+        this.mode = mode;
+    }
+
 }

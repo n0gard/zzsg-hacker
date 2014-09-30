@@ -1,4 +1,4 @@
-package com.nopackname;
+package com.nopackname.api;
 
 public class API_GEN_CONSCRIBE extends API {
 

@@ -1,4 +1,4 @@
-package com.nopackname;
+package com.nopackname.api;
 
 public class API_GET_USERINFO extends API {
     // /api_get_userinfo.php?jsonpcallback=jsonp1411542452515&_=1411542456494&
