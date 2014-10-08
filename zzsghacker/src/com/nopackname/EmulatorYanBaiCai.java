@@ -10,7 +10,7 @@ import com.nopackname.db.Global;
 import com.nopackname.tools.*;
 import com.nopackname.response.*;
 
-public class Emulator {
+public class EmulatorYanBaiCai {
 
     /**
      * @param args
@@ -19,8 +19,8 @@ public class Emulator {
         // constant
 
         // init
-        int myGeneralId = Global.bcjYuanshao;
-        int myCity = Global.bcjCity;
+        int myGeneralId = Global.yanbcZhouyu;
+        int myCity = Global.yanbcCity;
 
         // target
         int pcTarget = -1;
@@ -59,31 +59,26 @@ public class Emulator {
                             .parseObject(result.getResponse(), API_MY_GEN_MOD_REINIT_BASE_RESPONSE.class);
                     API_MY_GEN_MOD_REINIT_RESPONSE reinit = resp.getRet();
 
-                    boolean accept = false;
+                    boolean accept = true;
                     // judgement
                     if (pcTarget > 0) {
-                        if (reinit.getCt() > currentPc) {
-                        } else {
-                        }
-                        if (currentPc < currentPcMax - 10) {
+                        if (reinit.getCt() < currentPc) {
+                            accept = false;
                         }
                     }
                     if (piTarget > 0) {
-                        System.out.println("now jueji: " + reinit.getIt() + " pre jueji: " + currentPi);
-                        if (reinit.getIt() > currentPi) {
-                        } else {
-                        }
-                        if (currentPi < currentPiMax - 10) {
+                        if (reinit.getIt() < currentPi) {
+                            accept = false;
                         }
                     }
                     if (pwTarget > 0) {
-                        if (reinit.getWt() > currentPw) {
-                        } else {
-                        }
-                        if (currentPw < currentPwMax - 10) {
+                        if (reinit.getWt() < currentPw) {
+                            accept = false;
                         }
                     }
-
+                    System.out.println("now wuli: " + reinit.getCt() + " pre: " + currentPc);
+                    System.out.println("now jueji: " + reinit.getIt() + " pre: " + currentPi);
+                    System.out.println("now moulve: " + reinit.getWt() + " pre: " + currentPw);
                     if (accept) {
                         // accept
                         currentPc = reinit.getCt();
@@ -91,13 +86,16 @@ public class Emulator {
                         currentPw = reinit.getWt();
                         commands.add(new API_MY_GEN_MOD(API_MY_GEN_MOD.ACCEPT, myGeneralId, myCity,
                                 API_MY_GEN_MOD.MODE_EXP));
+                        System.out.println("======================ACCEPTED!=======================");
                     } else
                         // reject
                         commands.add(new API_MY_GEN_MOD(API_MY_GEN_MOD.REJECT, myGeneralId, myCity,
                                 API_MY_GEN_MOD.MODE_EXP));
                     // reinit
-                    commands
-                            .add(new API_MY_GEN_MOD(API_MY_GEN_MOD.REINIT, myGeneralId, myCity, API_MY_GEN_MOD.MODE_EXP));
+                    if ((currentPc < currentPcMax - 10) && (currentPi < currentPiMax - 10)
+                            && (currentPw < currentPwMax - 10))
+                        commands.add(new API_MY_GEN_MOD(API_MY_GEN_MOD.REINIT, myGeneralId, myCity,
+                                API_MY_GEN_MOD.MODE_EXP));
                 } else if (API_MY_GEN_MOD.REJECT.equals(gen.getAction())) {
 
                 } else if (API_MY_GEN_MOD.ACCEPT.equals(gen.getAction())) {
@@ -127,7 +125,7 @@ public class Emulator {
             }
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();

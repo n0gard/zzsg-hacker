@@ -86,6 +86,6 @@ public class API {
     }
 
     private String generateKey() {
-        return "8e6f2fdcaff0b469a689e3eb2a6b66ac";
+        return "98d97da46267ec8cbb59580c5ca25aff";
     }
 }
