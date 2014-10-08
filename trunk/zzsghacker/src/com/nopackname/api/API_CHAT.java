@@ -67,7 +67,7 @@ public class API_CHAT extends API {
         // HTTP/1.0
         API_CHAT chat = new API_CHAT();
         chat.targettype = TARGETTYPE_DEFAULT;
-        chat.txt = toURIEncoded("其实如果整体回档 银子应该还在的吧");
+        chat.txt = toURIEncoded("发奖金啦 5555");
         // System.out.println(chat.toString());
         String uriString = "http://s6.zzsanguo.com" + chat.toString();
         Map<String, String> headers = new HashMap<String, String>();
