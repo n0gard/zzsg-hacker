@@ -22,10 +22,6 @@ public class API_MY_GEN_MOD extends API {
     public static final String EXPTRAIN = "exptrain";
 
     // constant
-    public static final String ACTION = "action";
-    public static final String ID = "id";
-    public static final String CITY = "city";
-    public static final String MODE = "mode";
     public static final int MODE_EXP = 1;
     public static final int MODE_MONEY = 2;
     public static final int MODE_MONEY2 = 3;

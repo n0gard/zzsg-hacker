@@ -7,4 +7,7 @@ public class Global {
     // yan bai cai
     public static final int yanbcCity = 141093;
     public static final int yanbcZhouyu = 385477;
+
+    /** 飞骗 */
+    public static final int SID_HOURSE_41 = 41;
 }

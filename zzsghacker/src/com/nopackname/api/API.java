@@ -11,6 +11,13 @@ import org.apache.http.util.EntityUtils;
 import com.nopackname.tools.HttpResult;
 
 public class API {
+    // constant
+    public static final String ACTION = "action";
+    public static final String ID = "id";
+    public static final String CITY = "city";
+    public static final String MODE = "mode";
+    public static final String TYPE = "type";
+    public static final String NUM = "num";
     // hidden
     public static long startUpTime = System.currentTimeMillis();
     // symbol
@@ -86,6 +93,6 @@ public class API {
     }
 
     private String generateKey() {
-        return "98d97da46267ec8cbb59580c5ca25aff";
+        return "2d99b0c5312ceaf1e9bfe68081334299";
     }
 }
