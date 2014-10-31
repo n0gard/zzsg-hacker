@@ -8,9 +8,6 @@ public class MD5Encode {
     private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",
             "e", "f" };
 
-    /*
-     * 信息摘要是安全的单向哈希函数，它接收任意大小的数据，输出固定长度的哈希值。
-     */
     public MD5Encode() {
     }
 
@@ -21,7 +18,6 @@ public class MD5Encode {
             try {
                 md = MessageDigest.getInstance("MD5");
             } catch (NoSuchAlgorithmException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -32,11 +28,8 @@ public class MD5Encode {
         if (pwd == null) {
             return "";
         }
-        // 创建具有指定算法名称的信息摘要
         MessageDigest md = getDigest();
-        // 使用指定的字节更新摘要
         md.update(pwd.getBytes());
-        // 使用指定的字节数组对摘要进行最后更新，然后完成摘要计算
         return byteArrayToHexString(md.digest());
     }
 

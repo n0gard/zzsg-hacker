@@ -10,7 +10,7 @@ import com.nopackname.db.Global;
 import com.nopackname.tools.*;
 import com.nopackname.response.*;
 
-public class EmulatorYanBaiCai {
+public class WASH {
 
     /**
      * @param args
@@ -19,8 +19,8 @@ public class EmulatorYanBaiCai {
         // constant
 
         // init
-        int myGeneralId = Global.yanbcZhouyu;
-        int myCity = Global.yanbcCity;
+        int myGeneralId = Global.bcjYuanshao;
+        int myCity = Global.bcjCity;
 
         // target
         int pcTarget = -1;
@@ -92,8 +92,8 @@ public class EmulatorYanBaiCai {
                         commands.add(new API_MY_GEN_MOD(API_MY_GEN_MOD.REJECT, myGeneralId, myCity,
                                 API_MY_GEN_MOD.MODE_EXP));
                     // reinit
-                    if ((currentPc < currentPcMax - 10) && (currentPi < currentPiMax - 10)
-                            && (currentPw < currentPwMax - 10))
+                    if ((currentPc < currentPcMax - 10) || (currentPi < currentPiMax - 10)
+                            || (currentPw < currentPwMax - 10))
                         commands.add(new API_MY_GEN_MOD(API_MY_GEN_MOD.REINIT, myGeneralId, myCity,
                                 API_MY_GEN_MOD.MODE_EXP));
                 } else if (API_MY_GEN_MOD.REJECT.equals(gen.getAction())) {
@@ -106,17 +106,17 @@ public class EmulatorYanBaiCai {
                     API_MY_GEN_MOD_WASHPRICE_RESPONSE resp = baseResp.getRet();
                     currentPc = resp.getPc();
                     currentPcMax = resp.getPcmax();
-                    if (currentPc < currentPcMax - 10) {
+                    if (currentPc < currentPcMax - 10 && -1 == pcTarget) {
                         pcTarget = currentPcMax - 10;
                     }
                     currentPi = resp.getPi();
                     currentPiMax = resp.getPimax();
-                    if (currentPi < currentPiMax - 10) {
+                    if (currentPi < currentPiMax - 10 && -1 == piTarget) {
                         piTarget = currentPiMax - 10;
                     }
                     currentPw = resp.getPw();
                     currentPwMax = resp.getPwmax();
-                    if (currentPw < currentPwMax - 10) {
+                    if (currentPw < currentPwMax - 10 && -1 == pwTarget) {
                         pwTarget = currentPwMax - 10;
                     }
                 }
