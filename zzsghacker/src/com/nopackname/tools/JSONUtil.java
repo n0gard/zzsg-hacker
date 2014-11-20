@@ -46,7 +46,8 @@ public class JSONUtil {
     }
 
     @SuppressWarnings("unchecked")
-    public static Object parseObject(String json, Class clazz) {
+    public static Object parseObject(String json,
+            @SuppressWarnings("rawtypes") Class clazz) {
         try {
             return getMapper().readValue(json, clazz);
         } catch (JsonParseException e) {

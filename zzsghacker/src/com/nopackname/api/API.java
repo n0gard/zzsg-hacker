@@ -13,6 +13,7 @@ import com.nopackname.tools.HttpResult;
 public class API {
     // constant
     public static final String ACTION = "action";
+    public static final String PAGE = "page";
     public static final String ID = "id";
     public static final String CITY = "city";
     public static final String MODE = "mode";
@@ -53,6 +54,9 @@ public class API {
     String key;
 
     //
+    int city;
+
+    //
     String _l = _L_DEFAULT_CHS;
     String _p = _P_DEFAULT_ANDROID;
 
@@ -64,11 +68,13 @@ public class API {
         this.key = generateKey();
     }
 
-    public static ResponseHandler<String> generateAccLgoinResponseHandler(final HttpResult httpResult) {
+    public static ResponseHandler<String> generateAccLgoinResponseHandler(
+            final HttpResult httpResult) {
         // Create a custom response handler
         return new ResponseHandler<String>() {
 
-            public String handleResponse(final HttpResponse response) throws ClientProtocolException, IOException {
+            public String handleResponse(final HttpResponse response)
+                    throws ClientProtocolException, IOException {
                 int status = response.getStatusLine().getStatusCode();
                 httpResult.setStatus(String.valueOf(status));
                 String result = EntityUtils.toString(response.getEntity());
@@ -79,7 +85,8 @@ public class API {
                     HttpEntity entity = response.getEntity();
                     return entity != null ? result : null;
                 } else {
-                    throw new ClientProtocolException("Unexpected response status: " + status);
+                    throw new ClientProtocolException(
+                            "Unexpected response status: " + status);
                 }
             }
 
@@ -93,6 +100,6 @@ public class API {
     }
 
     private String generateKey() {
-        return "2d99b0c5312ceaf1e9bfe68081334299";
+        return "740e978717d64de3a6476c90ff2695cd";
     }
 }
