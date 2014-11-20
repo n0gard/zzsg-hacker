@@ -14,7 +14,6 @@ public class API_GET_USERINFO extends API {
         uriBuilder.append(path).append(JSONPCALLBACK).append(EQUAL).append(jsonpcallback);
         uriBuilder.append(AND).append(_).append(EQUAL).append(tag_);
         uriBuilder.append(AND).append(KEY).append(EQUAL).append(key);
-
         uriBuilder.append(AND).append(_L).append(EQUAL).append(_l);
         uriBuilder.append(AND).append(_P).append(EQUAL).append(_p);
         return uriBuilder.toString();

@@ -32,7 +32,8 @@ public class Sale {
         int myCity = Global.bcjCity;
 
         Queue<API> commands = new ConcurrentLinkedQueue<API>();
-        commands.add(new API_GOODS(API_GOODS.API_GOODS_TYPE_0, API_GOODS.API_GOODS_ACTION_LIST, myCity, 1));
+        commands.add(new API_GOODS(API_GOODS.API_GOODS_TYPE_0,
+                API_GOODS.API_GOODS_ACTION_LIST, myCity, 1));
 
         // do command
         while (true) {
@@ -44,17 +45,18 @@ public class Sale {
             Map<String, String> headers = new HashMap<String, String>();
             final HttpResult result = new HttpResult();
             try {
-                HttpClient.httpGet(uriString, headers, result, API.generateAccLgoinResponseHandler(result));
+                HttpClient.httpGet(uriString, headers, result,
+                        API.generateAccLgoinResponseHandler(result));
             } catch (Exception e) {
-                // TODO: handle exception
                 e.printStackTrace();
             }
             if (cmd instanceof API_GOODS) {
                 // logical
                 API_GOODS list = (API_GOODS) cmd;
                 if (API_GOODS.API_GOODS_ACTION_LIST.equals(list.getAction())) {
-                    API_GOODS_RESPONSE resp = (API_GOODS_RESPONSE) JSONUtil.parseObject(result.getResponse(),
-                            API_GOODS_RESPONSE.class);
+                    API_GOODS_RESPONSE resp = (API_GOODS_RESPONSE) JSONUtil
+                            .parseObject(result.getResponse(),
+                                    API_GOODS_RESPONSE.class);
                     API_GOODS_LIST_RESPONSE listResp = resp.getRet();
                     System.out.println(listResp.getMax());
                     List<Good> item = listResp.getItem();
@@ -67,11 +69,14 @@ public class Sale {
                     }
                     // add to sale list
                     for (Integer id : ids) {
-                        commands.add(new API_GOODS(id, 1, API_GOODS.API_GOODS_ACTION_SALE, myCity));
+                        commands.add(new API_GOODS(id, 1,
+                                API_GOODS.API_GOODS_ACTION_SALE, myCity));
                     }
-                } else if (API_GOODS.API_GOODS_ACTION_LIST.equals(list.getAction())) {
-                    API_GOODS_RESPONSE2 resp = (API_GOODS_RESPONSE2) JSONUtil.parseObject(result.getResponse(),
-                            API_GOODS_RESPONSE2.class);
+                } else if (API_GOODS.API_GOODS_ACTION_LIST.equals(list
+                        .getAction())) {
+                    API_GOODS_RESPONSE2 resp = (API_GOODS_RESPONSE2) JSONUtil
+                            .parseObject(result.getResponse(),
+                                    API_GOODS_RESPONSE2.class);
                     API_GOODS_SALE_RESPONSE saleResp = resp.getRet();
                     System.out.println(saleResp.getCredit());
                 }
